@@ -1,0 +1,36 @@
+{
+  "groups": [
+    {
+      "name": "wisdom.security",
+      "type": "top.ctong.wisdom.core.security.SecurityConfigProperties",
+      "sourceType": "top.ctong.wisdom.core.security.SecurityConfigProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "wisdom.security.authorization-type",
+      "type": "java.lang.String",
+      "description": "验证类型 @Default: Bearer",
+      "sourceType": "top.ctong.wisdom.core.security.SecurityConfigProperties"
+    },
+    {
+      "name": "wisdom.security.expires",
+      "type": "java.lang.Integer",
+      "description": "token 过期时间 @Default: 1800s",
+      "sourceType": "top.ctong.wisdom.core.security.SecurityConfigProperties"
+    },
+    {
+      "name": "wisdom.security.header-name",
+      "type": "java.lang.String",
+      "description": "验证请求头名称 @Default: Authorization",
+      "sourceType": "top.ctong.wisdom.core.security.SecurityConfigProperties"
+    },
+    {
+      "name": "wisdom.security.secret",
+      "type": "java.lang.String",
+      "description": "签名生成密钥 @Default: wisdom",
+      "sourceType": "top.ctong.wisdom.core.security.SecurityConfigProperties"
+    }
+  ],
+  "hints": []
+}

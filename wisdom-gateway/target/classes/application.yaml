@@ -1,0 +1,39 @@
+server:
+  port: 8840
+spring:
+  config:
+    import:
+      - optional:nacos:router.yaml
+  application:
+    name: wisdom-gateway
+  cloud:
+    nacos:
+      discovery:
+        group: DEV
+      config:
+        namespace: 7f756de6-4853-4a8a-a986-530bb4129f8d
+        group: DEV
+      server-addr: 119.91.193.254:8848
+    gateway:
+      routes:
+        - id: wisdom_user
+          uri: lb://wisdom-user
+          predicates:
+            - Path=/api/user/**
+          filters:
+            - RewritePath=/api/user/(?<path>.*),/$\{path}
+        - id: wisdom_third_party
+          uri: lb://wisdom-third-party
+          predicates:
+            - Path=/api/third-party/**
+          filters:
+            - RewritePath=/api/third-party/(?<path>.*),/$\{path}
+        - id: wisdom-product
+          uri: lb://wisdom-product
+          predicates:
+            - Path=/api/product/**
+          filters:
+            - RewritePath=/api/(?<path>.*),/$\{path}
+logging:
+  level:
+    top.ctong.wisdom.gateway: debug

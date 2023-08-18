@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.ctong.wisdom.product.mapper.UnitMapper">
+
+    <select id="getMaxSortNum" resultType="java.lang.Integer">
+        select coalesce(max(sort), 0) from sys_unit
+    </select>
+
+    <select id="page" resultType="top.ctong.wisdom.common.model.dto.product.unit.UnitPageResponse">
+        select unit_id, unit_name, unit_remark, enable, is_decimal, sort, create_at
+        from sys_unit
+        <where>
+            ${ew.sqlSegment}
+        </where>
+        order by sort
+    </select>
+
+</mapper>

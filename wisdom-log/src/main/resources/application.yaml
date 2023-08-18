@@ -1,0 +1,7 @@
+#
+#spring:
+#  data:
+#    mongodb:
+#      host:
+server:
+  port: 10100

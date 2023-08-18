@@ -1,0 +1,7 @@
+top.ctong.wisdom.common.config.CommonAutoConfiguration
+
+# 全局异常处理
+top.ctong.wisdom.common.exception.GlobalErrorHandler
+# 日志切面
+top.ctong.wisdom.common.log.print.LogAspect
+

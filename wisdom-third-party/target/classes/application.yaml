@@ -1,0 +1,23 @@
+server:
+  port: 10300
+spring:
+  config:
+    import:
+     - optional:nacos:database.yaml
+     - optional:nacos:log.yaml
+  application:
+    name: wisdom-third-party
+  cloud:
+    nacos:
+      discovery:
+        group: @config.nacos.discovery.group@
+      server-addr: @config.nacos-addr@
+      config:
+        group: @config.nacos.config.group@
+  data:
+    redis:
+      host: localhost
+      port: 6379
+logging:
+  level:
+    top.ctong.wisdom.thirdparty: debug

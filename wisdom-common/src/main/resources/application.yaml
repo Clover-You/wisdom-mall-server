@@ -1,0 +1,6 @@
+logging:
+  level:
+    top.ctong.wisdom.common: debug
+spring:
+  messages:
+    basename: i18n/messages

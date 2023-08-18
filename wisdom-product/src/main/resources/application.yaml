@@ -1,0 +1,29 @@
+server:
+  port: 10200
+spring:
+  profiles:
+    active:
+      - dev
+  config:
+    import:
+      - optional:nacos:database.yaml
+      - optional:nacos:log.yaml
+  application:
+    name: wisdom-product
+  datasource:
+    url:
+    username:
+    password:
+    driver-class-name:
+  cloud:
+    nacos:
+      discovery:
+        group: @config.nacos.discovery.group@
+      server-addr: @config.nacos-addr@
+      config:
+        namespace: 1dd53b79-5f05-4516-95e2-662364ece520
+        group: @config.nacos.config.group@
+
+logging:
+  level:
+    top.ctong.wisdom.product: debug

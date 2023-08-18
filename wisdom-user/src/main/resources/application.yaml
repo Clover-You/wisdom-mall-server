@@ -1,0 +1,31 @@
+server:
+  port: 10000
+spring:
+  config:
+    import:
+      - optional:nacos:database.yaml
+      - optional:nacos:log.yaml
+  datasource:
+    url:
+    username:
+    password:
+    driver-class-name: org.postgresql.Driver
+  application:
+    name: wisdom-user
+  cloud:
+    nacos:
+      discovery:
+        group: @config.nacos.discovery.group@
+      server-addr: @config.nacos-addr@
+      config:
+        namespace: 594c7e01-d402-461a-bf85-e1bd70c545cb
+        group: @config.nacos.config.group@
+logging:
+  level:
+    top.ctong.wisdom.user: debug
+    top.ctong.wisdom.common: debug
+
+wisdom:
+  security:
+#    secret: 2cdc4c5a3d2541378b13fa8a206d393d
+    expires: 1800
