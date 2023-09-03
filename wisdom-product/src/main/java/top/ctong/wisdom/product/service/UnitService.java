@@ -1,12 +1,11 @@
 package top.ctong.wisdom.product.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import top.ctong.wisdom.common.model.dto.product.unit.AddUnitRequest;
-import top.ctong.wisdom.common.model.dto.product.unit.SaveUnitUpdateRequest;
-import top.ctong.wisdom.common.model.dto.product.unit.UnitPageRequest;
-import top.ctong.wisdom.common.model.dto.product.unit.UnitPageResponse;
+import top.ctong.wisdom.common.model.dto.product.unit.*;
 import top.ctong.wisdom.common.model.entity.Unit;
 import top.ctong.wisdom.common.utils.PageResp;
+
+import java.util.List;
 
 /**
  * █████▒█      ██  ▄████▄   ██ ▄█▀     ██████╗ ██╗   ██╗ ██████╗
@@ -50,6 +49,9 @@ public interface UnitService extends IService<Unit> {
      */
     PageResp<UnitPageResponse> page(UnitPageRequest params, Long userId);
 
+
+    List<UnitListResponse> list(Long userId);
+
     /**
      * 保存修改
      *
@@ -71,4 +73,37 @@ public interface UnitService extends IService<Unit> {
      * @date 2023/7/27 11:39
      */
     Unit getOne(Long userId, Long unitId);
+
+    /**
+     * 通过单位 id 删除单位信息
+     *
+     * @param unitId 单位 id
+     * @param userId 用户 id
+     * @return boolean
+     * @author Clover You
+     * @date 2023/8/27 00:15
+     */
+    boolean removeById(Long userId, Long unitId);
+
+    /**
+     * 检查单位是否存在
+     *
+     * @param userId 用户 id
+     * @param unitId 单位 id
+     * @return boolean
+     * @author Clover You
+     * @date 2023/8/27 00:24
+     */
+    boolean exists(Long userId, Long unitId);
+
+    /**
+     * 重置单位顺序
+     *
+     * @param userId 用户id
+     * @param begin 开始索引
+     * @return boolean
+     * @author Clover You
+     * @date 2023/9/3 14:48
+     */
+    boolean resetSort(Long userId, int begin);
 }
