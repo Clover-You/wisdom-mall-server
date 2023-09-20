@@ -10,10 +10,10 @@ spring:
   cloud:
     nacos:
       discovery:
-        group: @config.nacos.discovery.group@
-      server-addr: @config.nacos-addr@
+        group: DEV
+      server-addr: 119.91.193.254:8848
       config:
-        group: @config.nacos.config.group@
+        group: DEV
   data:
     redis:
       host: localhost

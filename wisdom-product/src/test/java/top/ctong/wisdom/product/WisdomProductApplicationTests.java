@@ -8,6 +8,7 @@ class WisdomProductApplicationTests {
 
 	@Test
 	void contextLoads() {
+
 	}
 
 }

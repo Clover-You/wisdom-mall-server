@@ -6,8 +6,11 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import top.ctong.wisdom.common.model.dto.product.unit.UnitListResponse;
 import top.ctong.wisdom.common.model.dto.product.unit.UnitPageResponse;
 import top.ctong.wisdom.common.model.entity.Unit;
+
+import java.util.List;
 
 /**
  * █████▒█      ██  ▄████▄   ██ ▄█▀     ██████╗ ██╗   ██╗ ██████╗
@@ -37,16 +40,26 @@ public interface UnitMapper extends BaseMapper<Unit> {
      * @author Clover You
      * @date 2023/7/26 14:11
      */
-    int getMaxSortNum();
+    int getMaxSortNum(@Param("userId") Long userId);
 
     /**
      * 分页获取单位列表
      *
-     * @param page   分页
+     * @param page         分页
      * @param queryWrapper 查询条件
      * @return IPage<UnitPageResponse>
      * @author Clover You
      * @date 2023/7/26 16:31
      */
     IPage<UnitPageResponse> page(Page<Unit> page, @Param("ew") Wrapper<Unit> queryWrapper);
+
+    /**
+     * 获取用户所有单位信息
+     *
+     * @param userId 用户id
+     * @return List<UnitListResponse>
+     * @author Clover You
+     * @date 2023/9/3 13:46
+     */
+    List<UnitListResponse> selectListAll(@Param("userId") Long userId);
 }

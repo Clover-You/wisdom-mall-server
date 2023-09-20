@@ -5,7 +5,7 @@
 <mapper namespace="top.ctong.wisdom.product.mapper.UnitMapper">
 
     <select id="getMaxSortNum" resultType="java.lang.Integer">
-        select coalesce(max(sort), 0) from sys_unit
+        select coalesce(max(sort), 0) from sys_unit where user_id = #{userId}
     </select>
 
     <select id="page" resultType="top.ctong.wisdom.common.model.dto.product.unit.UnitPageResponse">
@@ -14,6 +14,13 @@
         <where>
             ${ew.sqlSegment}
         </where>
+        order by sort
+    </select>
+
+    <select id="selectListAll" resultType="top.ctong.wisdom.common.model.dto.product.unit.UnitListResponse">
+        select unit_id, unit_name, unit_remark, enable, is_decimal, sort, create_at
+        from sys_unit
+        where user_id = #{userId} and is_del = 0
         order by sort
     </select>
 

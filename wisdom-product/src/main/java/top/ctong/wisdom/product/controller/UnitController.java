@@ -1,6 +1,7 @@
 package top.ctong.wisdom.product.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.annotation.Resource;
 import jakarta.validation.Valid;
@@ -96,6 +97,32 @@ public class UnitController {
         log.debug("修改单位信息请求参数 ===>>> {}", params);
         var userId = Long.valueOf(principal.getName());
         unitService.updateSave(params, userId);
+        return R.ok();
+    }
+
+    /**
+     * 删除单位信息
+     *
+     * @param unitId 单位id
+     * @return R<?>
+     * @author Clover You
+     * @date 2023/8/27 00:04
+     */
+    @Log(name = "删除单位信息")
+    @Operation(summary = "删除单位信息")
+    @PostMapping("/remove")
+    public R<?> remove(
+        @RequestParam("unitId") @Parameter(description = "单位id", required = true) Long unitId,
+        Principal principal
+    ) {
+        log.debug("单位id ===>> {}", unitId);
+
+        var userId = Long.valueOf(principal.getName());
+        var result = unitService.removeById(userId, unitId);
+
+        if (!result) {
+            return R.fail();
+        }
         return R.ok();
     }
 
